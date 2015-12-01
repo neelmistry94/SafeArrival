@@ -78,7 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				C62109631C082BD600283F62 /* AppDelegate.swift */,
-				C62109651C082BD600283F62 /* ViewController.swift */,
+				C647B88B1C0E15AF00B10C04 /* Views */,
+				C647B88A1C0E15A200B10C04 /* View Controllers */,
 				C62109671C082BD600283F62 /* Main.storyboard */,
 				C621096A1C082BD600283F62 /* Images.xcassets */,
 				C621096C1C082BD600283F62 /* LaunchScreen.xib */,
@@ -110,6 +111,21 @@
 				C62109781C082BD700283F62 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C647B88A1C0E15A200B10C04 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C62109651C082BD600283F62 /* ViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		C647B88B1C0E15AF00B10C04 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,6 +425,7 @@
 				C621097F1C082BD700283F62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C62109801C082BD700283F62 /* Build configuration list for PBXNativeTarget "SafeArrivalTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +434,7 @@
 				C62109821C082BD700283F62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
