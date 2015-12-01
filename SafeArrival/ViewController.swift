@@ -79,7 +79,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
         var search: MKLocalSearch = MKLocalSearch(request: searchRequest)
         
         search.startWithCompletionHandler { (response:MKLocalSearchResponse!, error:NSError!) in
-            if (response.mapItems.count == 0) {
+            if (response.mapItems.count == 0 || response == nil) {
                 println("No Matches")
             }
             else {
@@ -88,6 +88,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
                     var pointAnnotation: MKPointAnnotation = MKPointAnnotation()
                     pointAnnotation.title = "Confirm Destination"
                     pointAnnotation.coordinate = item.placemark.coordinate
+                    self.MapView.centerCoordinate = pointAnnotation.coordinate
                     self.MapView.addAnnotation(pointAnnotation)
                 }
             }
