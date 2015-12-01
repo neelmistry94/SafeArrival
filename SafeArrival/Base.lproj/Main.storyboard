@@ -1,25 +1,90 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xcH-6I-Vfb">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="SafeArrival" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Destination" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kFT-co-ajp">
+                                <rect key="frame" x="16" y="72" width="288" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                                <connections>
+                                    <action selector="textFieldDidReturn:" destination="vXZ-lx-hvc" eventType="editingDidEndOnExit" id="xiB-45-XSb"/>
+                                </connections>
+                            </textField>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="U2r-Gr-omG">
+                                <rect key="frame" x="16" y="110" width="288" height="352"/>
+                                <animations/>
+                            </mapView>
+                        </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kFT-co-ajp" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" symbolic="YES" id="0wf-yh-OAL"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="U2r-Gr-omG" secondAttribute="bottom" constant="106" id="D2a-r7-6qZ"/>
+                            <constraint firstItem="U2r-Gr-omG" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Nrr-43-fTJ"/>
+                            <constraint firstItem="U2r-Gr-omG" firstAttribute="top" secondItem="kFT-co-ajp" secondAttribute="bottom" constant="8" symbolic="YES" id="T6R-NO-Vt4"/>
+                            <constraint firstItem="kFT-co-ajp" firstAttribute="leading" secondItem="U2r-Gr-omG" secondAttribute="leading" id="iyN-ok-6Z2"/>
+                            <constraint firstItem="kFT-co-ajp" firstAttribute="trailing" secondItem="U2r-Gr-omG" secondAttribute="trailing" id="lQE-iW-ZWS"/>
+                            <constraint firstItem="U2r-Gr-omG" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="ngl-XF-9Ez"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="yRx-2F-BfQ"/>
+                    <connections>
+                        <outlet property="MapView" destination="U2r-Gr-omG" id="sFu-k8-qMK"/>
+                        <outlet property="SearchBar" destination="kFT-co-ajp" id="4Ng-Sf-6we"/>
+                        <outlet property="searchDisplayController" destination="OEF-aL-RpD" id="4Ev-Q7-lmd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="OEF-aL-RpD">
+                    <connections>
+                        <outlet property="delegate" destination="vXZ-lx-hvc" id="f3Y-wB-zvb"/>
+                        <outlet property="searchContentsController" destination="vXZ-lx-hvc" id="2qH-If-dUK"/>
+                        <outlet property="searchResultsDataSource" destination="vXZ-lx-hvc" id="D4P-SA-ILg"/>
+                        <outlet property="searchResultsDelegate" destination="vXZ-lx-hvc" id="4A7-gS-yQd"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
+            <point key="canvasLocation" x="603" y="23"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="FXg-yn-0KO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xcH-6I-Vfb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vIQ-Za-Szk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="1nu-QI-Dyt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CRb-li-xs2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="153" y="303"/>
         </scene>
     </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>
