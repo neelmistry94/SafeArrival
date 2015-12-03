@@ -10,19 +10,26 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ViewController: UIViewController, UISearchBarDelegate {
+class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
 
-    @IBOutlet weak var MapView: MKMapView!
+    @IBOutlet weak var MapView: MKMapView!{
+        didSet{
+            MapView.delegate = self
+        }
+    }
     @IBOutlet weak var SearchBar: UITextField!
+    @IBOutlet weak var ContactsBtn: UIButton!
+    @IBOutlet weak var MessagesBtn: UIButton!
+    @IBOutlet weak var SettingsBtn: UIButton!
     
     var locationManager = CLLocationManager()
-    var matchingItems: NSMutableArray = []
     var currentDestination: NSString = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         setAppTitle()
+        formatButtons()
         setCurrentLocation()
     }
 
@@ -51,7 +58,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
     func setCurrentLocation(){
         MapView.showsUserLocation = true
         MapView.mapType = MKMapType(rawValue: 0)!
-        MapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
+        MapView.userTrackingMode = MKUserTrackingMode(rawValue: 1)!
     }
 
     func checkLocationAuthorizationStatus() {
@@ -84,14 +91,50 @@ class ViewController: UIViewController, UISearchBarDelegate {
             }
             else {
                 for item: MKMapItem in response.mapItems as! [MKMapItem] {
-                    self.matchingItems.addObject(item)
+                    var annotationView: MKAnnotationView = MKAnnotationView()
                     var pointAnnotation: MKPointAnnotation = MKPointAnnotation()
                     pointAnnotation.title = "Confirm Destination"
                     pointAnnotation.coordinate = item.placemark.coordinate
                     self.MapView.centerCoordinate = pointAnnotation.coordinate
                     self.MapView.addAnnotation(pointAnnotation)
+                    self.MapView.selectAnnotation(pointAnnotation, animated: true)
                 }
             }
         }
+    }
+    
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        var view = mapView.dequeueReusableAnnotationViewWithIdentifier("AnnotationView Id")
+        if view == nil{
+            view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "AnnotationView Id")
+            view!.canShowCallout = true
+        } else {
+            view!.annotation = annotation
+        }
+        
+        var confirmBtn: UIButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIButton
+
+        view?.rightCalloutAccessoryView = confirmBtn
+        
+        return view
+    }
+    
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        mapView.deselectAnnotation(view.annotation, animated: false)
+        performSegueWithIdentifier("Summary Page", sender: self)
+    }
+    
+    func formatButtons(){
+        ContactsBtn.layer.borderColor = UIColor.blackColor().CGColor
+        ContactsBtn.layer.borderWidth = 3
+        ContactsBtn.layer.cornerRadius = 5
+        
+        MessagesBtn.layer.borderColor = UIColor.blackColor().CGColor
+        MessagesBtn.layer.borderWidth = 3
+        MessagesBtn.layer.cornerRadius = 5
+        
+        SettingsBtn.layer.borderColor = UIColor.blackColor().CGColor
+        SettingsBtn.layer.borderWidth = 3
+        SettingsBtn.layer.cornerRadius = 5
     }
 }
