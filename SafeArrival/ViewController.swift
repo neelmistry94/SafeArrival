@@ -28,7 +28,6 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        setAppTitle()
         formatButtons()
         setCurrentLocation()
     }
@@ -43,18 +42,6 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-    func setAppTitle(){
-        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
-        var titleLabel: UILabel = UILabel(frame: CGRectMake(0, 0, self.navigationController!.navigationBar.frame.size.width, self.navigationController!.navigationBar.frame.size.height))
-        titleLabel.text = "Safe Arrival"
-        titleLabel.font = UIFont(name: "Helvetica", size: 50.0)
-        titleLabel.textColor = UIColor.blackColor()
-        titleLabel.backgroundColor = UIColor.whiteColor()
-        titleLabel.textAlignment = NSTextAlignment.Center
-        self.navigationItem.titleView = titleLabel
-
-    }
-    
     func setCurrentLocation(){
         MapView.showsUserLocation = true
         MapView.mapType = MKMapType(rawValue: 0)!
@@ -71,7 +58,7 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     
     @IBAction func textFieldDidReturn(sender: AnyObject) {
         sender.resignFirstResponder()
-        for pin:MKAnnotation in self.MapView.annotations as! [MKAnnotation] {
+        for pin:MKAnnotation in self.MapView.annotations as [MKAnnotation] {
             self.MapView.removeAnnotation(pin)
         }
         performSearch()
@@ -90,7 +77,7 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
                 println("No Matches")
             }
             else {
-                for item: MKMapItem in response.mapItems as! [MKMapItem] {
+                for item: MKMapItem in response.mapItems as [MKMapItem] {
                     var annotationView: MKAnnotationView = MKAnnotationView()
                     var pointAnnotation: MKPointAnnotation = MKPointAnnotation()
                     pointAnnotation.title = "Confirm Destination"
@@ -98,6 +85,10 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
                     self.MapView.centerCoordinate = pointAnnotation.coordinate
                     self.MapView.addAnnotation(pointAnnotation)
                     self.MapView.selectAnnotation(pointAnnotation, animated: true)
+                    
+                    let span = MKCoordinateSpanMake(0.05, 0.05)
+                    let region = MKCoordinateRegion(center: pointAnnotation.coordinate, span: span)
+                    self.MapView.setRegion(region, animated: true)
                 }
             }
         }
@@ -105,6 +96,18 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         var view = mapView.dequeueReusableAnnotationViewWithIdentifier("AnnotationView Id")
+        
+        // User location pin
+        var view2 = mapView.dequeueReusableAnnotationViewWithIdentifier(nil)
+        
+        var pinLoc = annotation.coordinate
+        var userLoc = mapView.userLocation.coordinate
+        
+        // Check if the pin we're loading is the userLocation
+        if (pinLoc.latitude == userLoc.latitude && pinLoc.longitude == userLoc.longitude){
+            return view2;
+        }
+        
         if view == nil{
             view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "AnnotationView Id")
             view!.canShowCallout = true
@@ -112,7 +115,7 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
             view!.annotation = annotation
         }
         
-        var confirmBtn: UIButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIButton
+        var confirmBtn: UIButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as UIButton
 
         view?.rightCalloutAccessoryView = confirmBtn
         
