@@ -17,6 +17,7 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
             MapView.delegate = self
         }
     }
+    
     @IBOutlet weak var SearchBar: UITextField!
     @IBOutlet weak var ContactsBtn: UIButton!
     @IBOutlet weak var MessagesBtn: UIButton!
@@ -58,7 +59,7 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     
     @IBAction func textFieldDidReturn(sender: AnyObject) {
         sender.resignFirstResponder()
-        for pin:MKAnnotation in self.MapView.annotations as [MKAnnotation] {
+        for pin:MKAnnotation in self.MapView.annotations as! [MKAnnotation] {
             self.MapView.removeAnnotation(pin)
         }
         performSearch()
@@ -77,7 +78,7 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
                 println("No Matches")
             }
             else {
-                for item: MKMapItem in response.mapItems as [MKMapItem] {
+                for item: MKMapItem in response.mapItems as! [MKMapItem] {
                     var annotationView: MKAnnotationView = MKAnnotationView()
                     var pointAnnotation: MKPointAnnotation = MKPointAnnotation()
                     pointAnnotation.title = "Confirm Destination"
@@ -115,7 +116,7 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
             view!.annotation = annotation
         }
         
-        var confirmBtn: UIButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as UIButton
+        var confirmBtn: UIButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIButton
 
         view?.rightCalloutAccessoryView = confirmBtn
         
