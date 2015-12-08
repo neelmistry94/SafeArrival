@@ -17,7 +17,7 @@ class SummaryViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        curDest.text = currentDestination
+        curDest.text = currentDestination as String
         messageText.text = messages[msgDefIndex].contents
     }
 

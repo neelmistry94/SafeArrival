@@ -22,9 +22,9 @@ class AddContactTableViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println(contacts.count);
+        print(contacts.count);
         
-        println(tableView(contactList, numberOfRowsInSection: 1))
+        print(tableView(contactList, numberOfRowsInSection: 1))
         contactList.delegate = self
         
         self.contactList.reloadData()
@@ -40,7 +40,7 @@ class AddContactTableViewController: UIViewController, UITableViewDelegate {
     @IBAction func save(sender: AnyObject) {
         
         // This needs to be filled with selected contacts from the contactList
-        let cg = ContactGroup(name: groupName.text, contents: ["No Contacts"])!
+        let cg = ContactGroup(name: groupName.text!, contents: ["No Contacts"])!
         
         contactGroups += [cg]
         
@@ -57,7 +57,7 @@ class AddContactTableViewController: UIViewController, UITableViewDelegate {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "ContactTableCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as ContactTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ContactTableViewCell
 
         let nm = contacts[indexPath.row]
         
