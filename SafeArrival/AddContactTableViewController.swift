@@ -25,7 +25,7 @@ class AddContactTableViewController: UIViewController, UITableViewDelegate {
 
         println(contacts.count);
         
-        println(tableView(contactList, numberOfRowsInSection: 1))
+        print(tableView(contactList, numberOfRowsInSection: 1))
         contactList.delegate = self
         
         self.contactList.reloadData()

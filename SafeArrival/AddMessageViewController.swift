@@ -27,7 +27,7 @@ class AddMessageViewController: UIViewController {
     }
     
     @IBAction func save(sender: AnyObject) {
-        let m = Message(name: newMsgName.text, contents: newMsgMsg.text)!
+        let m = Message(name: newMsgName.text!, contents: newMsgMsg.text!)!
 
         messages += [m]
         

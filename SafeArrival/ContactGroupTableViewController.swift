@@ -15,9 +15,9 @@ class ContactGroupTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var rightAddBarButtonItem:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addTapped:")
+        let rightAddBarButtonItem:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addTapped:")
         // 2
-        var rightSearchBarButtonItem:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "editTapped:")
+        let rightSearchBarButtonItem:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "editTapped:")
         // 3
         self.navigationItem.setRightBarButtonItems([rightAddBarButtonItem,rightSearchBarButtonItem], animated: true)
 
@@ -51,7 +51,7 @@ class ContactGroupTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ContactGroupTableViewCell
 
         let g = contactGroups[indexPath.row]
-        let stringRepresentation = ", ".join(g.contacts)
+        let stringRepresentation = g.contacts.joinWithSeparator(", ")
         
         cell.contactGrpName.text = g.name
         cell.contactGrpPreview.text = stringRepresentation
@@ -70,7 +70,7 @@ class ContactGroupTableViewController: UITableViewController {
     
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-        var itemToMove = contactGroups[fromIndexPath.row]
+        let itemToMove = contactGroups[fromIndexPath.row]
         contactGroups.removeAtIndex(fromIndexPath.row)
         contactGroups.insert(itemToMove, atIndex: toIndexPath.row)
     }

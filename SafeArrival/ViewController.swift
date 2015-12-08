@@ -116,14 +116,14 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     func performSearch() {
         var searchRequest: MKLocalSearchRequest = MKLocalSearchRequest()
         searchRequest.naturalLanguageQuery = SearchBar.text
-        currentDestination = SearchBar.text
+        currentDestination = SearchBar.text!
         searchRequest.region = MapView.region
         
         var search: MKLocalSearch = MKLocalSearch(request: searchRequest)
         
-        search.startWithCompletionHandler { (response:MKLocalSearchResponse!, error:NSError!) in
-            if (response.mapItems.count == 0 || response == nil) {
-                println("No Matches")
+        search.startWithCompletionHandler { (response:MKLocalSearchResponse?, error:NSError?) in
+            if (response!.mapItems.count == 0 || response == nil) {
+                print("No Matches")
             }
             else {
                 for item: MKMapItem in response.mapItems as! [MKMapItem] {
@@ -147,7 +147,7 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
         var view = mapView.dequeueReusableAnnotationViewWithIdentifier("AnnotationView Id")
         
         // User location pin
-        var view2 = mapView.dequeueReusableAnnotationViewWithIdentifier(nil)
+        var view2 = mapView.dequeueReusableAnnotationViewWithIdentifier("")
         
         var pinLoc = annotation.coordinate
         var userLoc = mapView.userLocation.coordinate
