@@ -69,8 +69,16 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     func loadDefaultGroup(){
         
         let g1 = ContactGroup(name: "Parents", contents: ["Mom", "Dad"])!
+        let g2 = ContactGroup(name: "Siblings", contents: ["Brother", "Sister"])!
+        let g3 = ContactGroup(name: "Friends", contents: ["Bob"])!
+        let g4 = ContactGroup(name: "Lover", contents: ["Baby"])!
+        let g5 = ContactGroup(name: "Office", contents: ["Worker A", "Worker B", "Worker C"])!
         
         contactGroups += [g1]
+        contactGroups += [g2]
+        contactGroups += [g3]
+        contactGroups += [g4]
+        contactGroups += [g5]
     }
     
     func loadContacts(){
@@ -99,7 +107,7 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     
     @IBAction func textFieldDidReturn(sender: AnyObject) {
         sender.resignFirstResponder()
-        for pin:MKAnnotation in self.MapView.annotations as [MKAnnotation] {
+        for pin:MKAnnotation in self.MapView.annotations as! [MKAnnotation] {
             self.MapView.removeAnnotation(pin)
         }
         performSearch()
@@ -156,7 +164,7 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
             view!.annotation = annotation
         }
         
-        var confirmBtn: UIButton = UIButton(type: UIButtonType.DetailDisclosure) as UIButton
+        var confirmBtn: UIButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIButton
 
         view?.rightCalloutAccessoryView = confirmBtn
         

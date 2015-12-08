@@ -26,15 +26,17 @@ class SummaryViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func EnRoute(sender: AnyObject) {
+        var titleLabel: UILabel = UILabel(frame: CGRectMake(0, 0, self.navigationController!.navigationBar.frame.size.width, self.navigationController!.navigationBar.frame.size.height))
+        titleLabel.text = "En Route To..."
+        titleLabel.font = UIFont(name: "Helvetica", size: 25.0)
+        titleLabel.textAlignment = NSTextAlignment.Center
+        self.navigationItem.titleView = titleLabel
+        
+        var disableMyButton = sender as? UIButton
+        disableMyButton!.enabled = false
+        disableMyButton?.hidden = true
     }
-    */
-
+    
+    
 }
