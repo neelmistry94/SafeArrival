@@ -36,7 +36,11 @@ class SummaryViewController: UIViewController {
         var disableMyButton = sender as? UIButton
         disableMyButton!.enabled = false
         disableMyButton?.hidden = true
+        
+        let alert = UIAlertController(title: "Destination Reached", message: "Message was sent!", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {alertAction in self.performSegueWithIdentifier("Return Home", sender: self)}))
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        
     }
-    
-    
 }

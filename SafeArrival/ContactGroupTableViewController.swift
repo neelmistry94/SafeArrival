@@ -51,11 +51,10 @@ class ContactGroupTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ContactGroupTableViewCell
 
         let g = contactGroups[indexPath.row]
-        let stringRepresentation = g.contacts.joinWithSeparator(", ")
+        let stringRepresentation = ", ".join(g.contacts)
         
         cell.contactGrpName.text = g.name
         cell.contactGrpPreview.text = stringRepresentation
-        // Configure the cell...
 
         return cell
     }

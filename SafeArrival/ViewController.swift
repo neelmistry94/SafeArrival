@@ -126,7 +126,7 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
                 print("No Matches")
             }
             else {
-                for item: MKMapItem in response!.mapItems as [MKMapItem] {
+                for item: MKMapItem in response!.mapItems as! [MKMapItem] {
                     var annotationView: MKAnnotationView = MKAnnotationView()
                     var pointAnnotation: MKPointAnnotation = MKPointAnnotation()
                     pointAnnotation.title = "Confirm Destination"
