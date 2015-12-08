@@ -301,6 +301,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="wcu-9e-tMt"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="contactList" destination="gen-NN-u0v" id="xnS-mn-3zh"/>
                         <outlet property="curDest" destination="ScC-Gb-Z0o" id="kSt-WO-arj"/>
                         <outlet property="messageText" destination="E5a-GG-XvF" id="UEi-9W-NPO"/>
                         <segue destination="xcH-6I-Vfb" kind="modal" identifier="Return Home" id="h5u-lh-bKY"/>
@@ -859,7 +860,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="oDG-gP-4a3"/>
         <segue reference="h5u-lh-bKY"/>
-        <segue reference="yCs-5W-fBA"/>
-        <segue reference="j5K-En-84e"/>
+        <segue reference="tfF-ew-7D9"/>
+        <segue reference="x3D-Jk-V7a"/>
     </inferredMetricsTieBreakers>
 </document>
