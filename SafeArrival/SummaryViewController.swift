@@ -37,10 +37,12 @@ class SummaryViewController: UIViewController {
         disableMyButton!.enabled = false
         disableMyButton?.hidden = true
         
+        var timer = NSTimer.scheduledTimerWithTimeInterval(20, target: self, selector: Selector("someSelector"), userInfo: nil, repeats: false)
+    }
+    
+    func someSelector(){
         let alert = UIAlertController(title: "Destination Reached", message: "Message was sent!", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {alertAction in self.performSegueWithIdentifier("Return Home", sender: self)}))
         self.presentViewController(alert, animated: true, completion: nil)
-        
-        
     }
 }
