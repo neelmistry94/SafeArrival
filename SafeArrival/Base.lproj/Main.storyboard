@@ -180,41 +180,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="114" id="xx3-MX-mqT"/>
                                 </constraints>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Ism-tL-Lb3">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ism-tL-Lb3" id="Riu-9R-sk0">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DgB-eT-YgH">
-                                                    <rect key="frame" x="8" y="8" width="240" height="21"/>
-                                                    <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhF-1C-7v3">
-                                                    <rect key="frame" x="8" y="22" width="240" height="21"/>
-                                                    <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <animations/>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="vhF-1C-7v3" secondAttribute="bottom" id="0AK-nq-0Zc"/>
-                                                <constraint firstItem="vhF-1C-7v3" firstAttribute="top" secondItem="Riu-9R-sk0" secondAttribute="topMargin" constant="14" id="466-GN-m3D"/>
-                                                <constraint firstItem="DgB-eT-YgH" firstAttribute="leading" secondItem="Riu-9R-sk0" secondAttribute="leadingMargin" id="Ldp-uz-FSd"/>
-                                                <constraint firstItem="vhF-1C-7v3" firstAttribute="trailing" secondItem="DgB-eT-YgH" secondAttribute="trailing" id="exY-Lu-GFU"/>
-                                                <constraint firstItem="DgB-eT-YgH" firstAttribute="top" secondItem="Riu-9R-sk0" secondAttribute="topMargin" id="iNq-IG-CXm"/>
-                                                <constraint firstItem="vhF-1C-7v3" firstAttribute="leading" secondItem="DgB-eT-YgH" secondAttribute="leading" id="qTH-6O-3um"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="DgB-eT-YgH" secondAttribute="trailing" constant="32" id="vJp-8s-tTc"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <animations/>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azo-bd-fg8">
                                 <rect key="frame" x="273" y="134" width="31" height="22"/>
@@ -336,7 +301,6 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="wcu-9e-tMt"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="contactList" destination="gen-NN-u0v" id="xnS-mn-3zh"/>
                         <outlet property="curDest" destination="ScC-Gb-Z0o" id="kSt-WO-arj"/>
                         <outlet property="messageText" destination="E5a-GG-XvF" id="UEi-9W-NPO"/>
                         <segue destination="xcH-6I-Vfb" kind="modal" identifier="Return Home" id="h5u-lh-bKY"/>
@@ -895,7 +859,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="oDG-gP-4a3"/>
         <segue reference="h5u-lh-bKY"/>
-        <segue reference="tfF-ew-7D9"/>
-        <segue reference="x3D-Jk-V7a"/>
+        <segue reference="yCs-5W-fBA"/>
+        <segue reference="j5K-En-84e"/>
     </inferredMetricsTieBreakers>
 </document>

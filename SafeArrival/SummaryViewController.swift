@@ -11,12 +11,14 @@ import UIKit
 class SummaryViewController: UIViewController {
 
     @IBOutlet weak var curDest: UILabel!
+    @IBOutlet weak var messageText: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         curDest.text = currentDestination as String
+        messageText.text = messages[msgDefIndex].contents
     }
 
     override func didReceiveMemoryWarning() {
